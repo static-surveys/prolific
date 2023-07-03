@@ -68,7 +68,7 @@
         else {
             document.getElementById("tv").innerHTML = abstracts[getRandomNumberFromString(user_id)][0];
             document.getElementById("abs").innerHTML = abstracts[getRandomNumberFromString(user_id)][0];
-
+            document.getElementById("pid").innerHTML = user_id;
         }
 
     })
@@ -150,6 +150,9 @@
         </textarea>
 
         <textarea label="" name="abstract" id="abs" style="visibility: hidden; height: 0px;">
+        </textarea>
+
+        <textarea label="" name="prolific_id" id="pid" style="visibility: hidden; height: 0px;">
         </textarea>
 
         <!-- your other form fields go here -->
