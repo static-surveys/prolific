@@ -82,7 +82,7 @@
 
             // image vs. abstract
             if (is_image) {
-                document.getElementById("tv").innerHTML = `<center><img src="${abstract_number}.png" width="460px"></center>`;
+                document.getElementById("tv").innerHTML = `<center><img src="./images/${abstract_number}.png" width="460px"></center>`;
                 document.getElementById("is_image").innerHTML = "true";
                 document.getElementById("abs").innerHTML = abstracts[abstract_number][0];
 
@@ -108,9 +108,6 @@
 
                     // Use the Clipboard API to modify the copied text
                     event.clipboardData.setData('text/plain', customText);
-
-                    // Remove the original selected text
-                    window.getSelection().deleteFromDocument();
 
                     // Log the modified text
                     console.log('Modified text:', customText);
