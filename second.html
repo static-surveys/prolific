@@ -131,6 +131,33 @@
             document.getElementById("pid").innerHTML = user_id;
         }
 
+
+        var form = document.getElementById("my-form");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            var data = new FormData(event.target);
+
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    const queryString = window.location.search;
+                    const urlParams = new URLSearchParams(queryString);
+                    const user_id = urlParams.get('PROLIFIC_PID');
+                    window.location.href = `https://static-surveys.github.io/prolific/additional?PROLIFIC_PID=${user_id}`;
+                } else {
+
+                }
+            }).catch(error => {
+            });
+        }
+
+        form.addEventListener("submit", handleSubmit)
     })
 
 
@@ -161,32 +188,6 @@
         divElement.innerHTML = JSON.stringify(keysPressed);
     });
 
-
-    var form = document.getElementById("myform");
-
-    async function handleSubmit(event) {
-        event.preventDefault();
-        var status = document.getElementById("my-form-status");
-        fetch(event.target.action, {
-            method: form.method,
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(response => {
-            if (response.ok) {
-                const queryString = window.location.search;
-                const urlParams = new URLSearchParams(queryString);
-                const user_id = urlParams.get('PROLIFIC_PID');
-                window.open(`https://static-surveys.github.io/prolific/additional?PROLIFIC_PID=${user_id}`);
-            } else {
-
-            }
-        }).catch(error => {
-        });
-    }
-
-    form.addEventListener("submit", handleSubmit)
 
 </script>
 
@@ -219,9 +220,9 @@
 
 
     </div>
-    <form   id="myform"
-            action="https://formspree.io/f/xrgwgnbo"
-            method="POST"
+    <form id="my-form"
+          action="https://formspree.io/f/xrgwgnbo"
+          method="POST"
     >
 
 
@@ -257,8 +258,7 @@
 
         <!-- your other form fields go here -->
         <div>
-            <button type="submit" id="myfreakingbutton" , onClick="redirectFunc()">Submit</button>
-
+            <button type="submit" id="myfreakingbutton">Submit</button>
         </div>
 
     </form>
