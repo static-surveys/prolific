@@ -56,8 +56,6 @@
     }
 
     let keysPressed = [];
-
-
     window.addEventListener('load', function () {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
@@ -70,7 +68,6 @@
             document.getElementById("abs").innerHTML = abstracts[getRandomNumberFromString(user_id)][0];
             document.getElementById("pid").innerHTML = user_id;
         }
-
     })
 
 

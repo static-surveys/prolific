@@ -45,7 +45,10 @@ for v, text in enumerate(abstracts):
     #
     tmp = text.split("\n\n")
     titlev = tmp[0]
-    textsv = "\n".join(tmp[1:])
+    textsv = "\n\n".join(tmp[1:])
+    print(titlev)
+    print(textsv)
+
     draw_multiple_line_text(image, titlev, ImageFont.truetype("Arial.ttf", 30), text_color, 50, w=50)
     draw_multiple_line_text(image, textsv, ImageFont.truetype("Arial.ttf", 22), text_color, 180, w=70)
     image.save('{}.png'.format(str(v)))

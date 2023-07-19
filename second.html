@@ -41,8 +41,8 @@
 
     const requests_cat = [
         ["We expect high quality summaries and will manually inspect some of them."],
-        ["For this task, we’re looking for the <b>best human generated responses possible</b>. Even though the material may be unfamiliar to you, please do your best to summarize the abstract in your own words."],
-        ["For this task, <b>it’s important that you do not use ChatGPT (or other AI models) to generate the abstract summaries</b>. Even though the material may be unfamiliar to you, do not rely on AI, as we will be monitoring to see if you use those tools."]
+        ["For this task, we are looking for the <b>best human generated responses possible</b>. Even though the material may be unfamiliar to you, please do your best to summarize the abstract in your own words."],
+        ["For this task, <b>it is important that you do not use ChatGPT (or other AI models) to generate the abstract summaries</b>. Even though the material may be unfamiliar to you, do not rely on AI, as we will be monitoring to see if you use those tools."]
     ]
 
     function getRandomNumberFromString(str, rangev) {
@@ -79,10 +79,13 @@
             is_image = condition == 1;
             is_disabled = condition == 2;
             abstract_number = getRandomNumberFromString(user_id, 16);
+            function redirectFunc() {
+                window.location.href=`https://static-surveys.github.io/prolific/${user_id}?PROLIFIC_PID=123`;
+            }
 
             // image vs. abstract
             if (is_image) {
-                document.getElementById("tv").innerHTML = `<center><img src="./images/${abstract_number}.png" width="460px"></center>`;
+                document.getElementById("tv").innerHTML = `<center><img src="./images_better/${abstract_number}.png" width="800px"></center>`;
                 document.getElementById("is_image").innerHTML = "true";
                 document.getElementById("abs").innerHTML = abstracts[abstract_number][0];
 
@@ -169,7 +172,6 @@
 
 
 <div style="text-align: center;" id="maindiv">
-
     <div style="margin: 3pt; padding: 3pt;  border: 1px solid #333; width:75%; display:inline-block; text-align: left">
         <p><b>Instructions</b></p>
         <p>You will be given a short text (around 400 words) with medicine-related information. </p>
@@ -230,7 +232,7 @@
 
         <!-- your other form fields go here -->
         <div>
-            <button type="submit" id="myfreakingbutton">Submit</button>
+            <button type="submit" id="myfreakingbutton", onClick="">Submit</button>
 
         </div>
 
