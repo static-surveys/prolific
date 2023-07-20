@@ -100,9 +100,11 @@
                 });
                 document.addEventListener('copy', function (event) {
                     event.preventDefault();
+                    const date = new Date();  // Moved date inside this function
 
                     // Get the selected text
                     var selectedText = window.getSelection().toString();
+                    keysPressed.push(['copy', window.getSelection().toString(), date.toISOString()]);
 
                     // Replace the selected text with a custom sentence
                     var customText = "Please do not copy-paste the abstract! Write the summary yourself!";
@@ -183,7 +185,7 @@
     document.addEventListener('copy', function (event) {
         const date = new Date();  // Moved date inside this function
         // Append the pasted data to the keysPressed array
-        keysPressed.push(['copy', window.getSelection().toString()]);
+        keysPressed.push(['copy', window.getSelection().toString(), date.toISOString()]);
         const divElement = document.getElementById("hf");
         divElement.innerHTML = JSON.stringify(keysPressed);
     });
