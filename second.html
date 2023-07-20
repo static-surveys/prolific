@@ -19,7 +19,6 @@
 
 <script>
 
-
     // Initialize an empty string to store the pressed keys
     const abstracts = [
         ['Comparison of Weight-Loss Diets with Different Compositions of Fat, Protein, and Carbohydrates\n\nThe possible advantage for weight loss of a diet that emphasizes protein, fat, or carbohydrates has not been established, and there are few studies that extend beyond 1 year.\n\nWe randomly assigned 811 overweight adults to one of four diets; the targeted percentages of energy derived from fat, protein, and carbohydrates in the four diets were 20, 15, and 65%; 20, 25, and 55%; 40, 15, and 45%; and 40, 25, and 35%. The diets consisted of similar foods and met guidelines for cardiovascular health. The participants were offered group and individual instructional sessions for 2 years. The primary outcome was the change in body weight after 2 years in two-by-two factorial comparisons of low fat versus high fat and average protein versus high protein and in the comparison of highest and lowest carbohydrate content.\n\nAt 6 months, participants assigned to each diet had lost an average of 6 kg, which represented 7% of their initial weight; they began to regain weight after 12 months. By 2 years, weight loss remained similar in those who were assigned to a diet with 15% protein and those assigned to a diet with 25% protein (3.0 and 3.6 kg, respectively); in those assigned to a diet with 20% fat and those assigned to a diet with 40% fat (3.3 kg for both groups); and in those assigned to a diet with 65% carbohydrates and those assigned to a diet with 35% carbohydrates (2.9 and 3.4 kg, respectively) (P) 0.20 for all comparisons). Among the 80% of participants who completed the trial, the average weight loss was 4 kg; 14 to 15% of the participants had a reduction of at least 10% of their initial body weight. Satiety, hunger, satisfaction with the diet, and attendance at group sessions were similar for all diets; attendance was strongly associated with weight loss (0.2 kg per session attended). The diets improved lipid-related risk factors and fasting insulin levels.\n'],
@@ -95,6 +94,9 @@
 
             // is disabled?
             if (is_disabled) {
+                document.getElementById("copypaste").innerHTML = "Take note: Copy-paste has been disabled for this task.";
+
+
                 document.addEventListener('paste', function (event) {
                     event.preventDefault();
                 });
@@ -107,7 +109,7 @@
                     keysPressed.push(['copy', window.getSelection().toString(), date.toISOString()]);
 
                     // Replace the selected text with a custom sentence
-                    var customText = "Please do not copy-paste the abstract! Write the summary yourself!";
+                    var customText = "";
 
                     // Use the Clipboard API to modify the copied text
                     event.clipboardData.setData('text/plain', customText);
@@ -201,6 +203,8 @@
 
 <div style="text-align: center;" id="maindiv">
     <div style="margin: 3pt; padding: 3pt;  border: 1px solid #333; width:75%; display:inline-block; text-align: left">
+                <center><p id="copypaste" style="color: red"> </p></center>
+
         <p><b>Instructions</b></p>
         <p>You will be given a short text (around 400 words) with medicine-related information. </p>
 
